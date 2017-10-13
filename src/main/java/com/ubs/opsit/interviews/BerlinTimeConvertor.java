@@ -9,7 +9,7 @@ public class BerlinTimeConvertor implements TimeConverter {
 		int hours = Integer.parseInt(times[0]);
 		int mins = Integer.parseInt(times[1]);
 		int seconds = Integer.parseInt(times[2]);
-
+		
 		StringBuffer timeinBerlinClock = new StringBuffer();
 		appendSecondsRepresentation(timeinBerlinClock, seconds);
 		appendHoursRepresentation(timeinBerlinClock, hours);
@@ -18,7 +18,10 @@ public class BerlinTimeConvertor implements TimeConverter {
 		return timeinBerlinClock.toString();
 	}
 
-	private void appendHoursRepresentation(StringBuffer timeinBerlinClock, int hours) {
+	public void appendHoursRepresentation(StringBuffer timeinBerlinClock, int hours) {
+		if(hours < 0 || hours > 24) {
+			throw new RuntimeException("Invalid Time");
+		}
 		int remHour = hours % 5;
 		int modHour = hours/5;
 		
@@ -43,7 +46,10 @@ public class BerlinTimeConvertor implements TimeConverter {
 		timeinBerlinClock.append("\r\n");
 	}
 
-	private void appendMinutesRepresentation(StringBuffer timeinBerlinClock, int mins) {
+	public void appendMinutesRepresentation(StringBuffer timeinBerlinClock, int mins) {
+		if(mins < 0 || mins > 60) {
+			throw new RuntimeException("Invalid Time");
+		}
 		int remMin = mins % 5;
 		int modMin = mins/5;
 
@@ -70,7 +76,10 @@ public class BerlinTimeConvertor implements TimeConverter {
 		timeinBerlinClock.append("");
 	}
 
-	private void appendSecondsRepresentation(StringBuffer timeinBerlinClock, int seconds) {
+	public void appendSecondsRepresentation(StringBuffer timeinBerlinClock, int seconds) {
+		if(seconds < 0 || seconds > 60) {
+			throw new RuntimeException("Invalid Time");
+		}
 		int mod = seconds % 2;
 		timeinBerlinClock.append((mod > 0) ? "O\r\n" : "Y\r\n");
 	}
