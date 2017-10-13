@@ -18,7 +18,8 @@ public class BerlinClockFixture {
 
     @Test
     public void berlinClockAcceptanceTests() throws Exception {
-        aBehaviouralTestRunner()
+    	berlinClock = new BerlinTimeConvertor();
+    	aBehaviouralTestRunner()
                 .usingStepsFrom(this)
                 .withStory("berlin-clock.story")
                 .run();
