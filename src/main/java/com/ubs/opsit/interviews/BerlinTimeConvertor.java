@@ -4,12 +4,7 @@ public class BerlinTimeConvertor implements TimeConverter {
 
 	@Override
 	public String convertTime(String aTime) {
-		
-/*		return "Y\r\n" + 
-				"OOOO\r\n" + 
-				"OOOO\r\n" + 
-				"OOOOOOOOOOO\r\n" + 
-				"OOOO"*/
+
 		String[] times = aTime.split(":");
 		int hours = Integer.parseInt(times[0]);
 		int mins = Integer.parseInt(times[1]);
